@@ -21,6 +21,7 @@
     "@angular/router": "~8.2.9",
     "@ngrx/data": "^8.5.2",
     "@ngrx/effects": "^8.5.2",
+    "@ngrx/entity": "^8.5.2",
     "@ngrx/store": "^8.5.2",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
