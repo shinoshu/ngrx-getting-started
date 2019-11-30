@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
+import { HeroService } from '../../hero.service';
+
 @Component({
   selector: 'app-hero-detail',
   templateUrl: './hero-detail.component.html',
   styleUrls: ['./hero-detail.component.css']
 })
 export class HeroDetailComponent {
-  addressForm = this.fb.group({
+  form = this.fb.group({
     company: null,
     firstName: [null, Validators.required],
     lastName: [null, Validators.required],
@@ -78,9 +80,14 @@ export class HeroDetailComponent {
     {name: 'Wyoming', abbreviation: 'WY'}
   ];
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private heroService: HeroService) {}
+
+  add(hero: any) {
+    this.heroService.add(hero);
+  }
 
   onSubmit() {
+    this.add(this.form.value);
     alert('Thanks!');
   }
 }
