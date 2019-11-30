@@ -15,9 +15,6 @@ import { AppComponent } from './app.component';
 import { HeroesComponent } from './hero/heroes.component';
 import { HeroDetailComponent } from './hero/hero-detail/hero-detail.component';
 import { HeroListComponent } from './hero/hero-list/hero-list.component';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -36,9 +33,6 @@ import { MatSortModule } from '@angular/material/sort';
     EntityDataModule.forRoot(entityConfig),
     DemoMaterialModule,
     AppRoutingModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule
   ],
   bootstrap: [AppComponent]
 })
