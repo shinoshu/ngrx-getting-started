@@ -8,6 +8,7 @@ import { DefaultDataServiceConfig, EntityDataModule } from '@ngrx/data';
 import { entityConfig } from './entity-metadata';
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './hero/heroes.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HeroesComponent } from './hero/heroes.component';
     HttpClientModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
-    EntityDataModule.forRoot(entityConfig)
+    EntityDataModule.forRoot(entityConfig),
+    BrowserAnimationsModule
   ],
   bootstrap: [AppComponent]
 })
