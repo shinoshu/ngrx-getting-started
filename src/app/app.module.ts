@@ -10,11 +10,19 @@ import { DemoMaterialModule } from './demo-material-module';
 import { entityConfig } from './entity-metadata';
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './hero/heroes.component';
+import { HeroDetailComponent } from './hero/hero-detail/hero-detail.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeroesComponent
+    HeroesComponent,
+    HeroDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +31,13 @@ import { HeroesComponent } from './hero/heroes.component';
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     EntityDataModule.forRoot(entityConfig),
-    DemoMaterialModule
+    DemoMaterialModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule,
+    ReactiveFormsModule
   ],
   bootstrap: [AppComponent]
 })
