@@ -14,12 +14,17 @@ import { entityConfig } from './entity-metadata';
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './hero/heroes.component';
 import { HeroDetailComponent } from './hero/hero-detail/hero-detail.component';
+import { HeroListComponent } from './hero/hero-list/hero-list.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroesComponent,
-    HeroDetailComponent
+    HeroDetailComponent,
+    HeroListComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +35,10 @@ import { HeroDetailComponent } from './hero/hero-detail/hero-detail.component';
     EffectsModule.forRoot([]),
     EntityDataModule.forRoot(entityConfig),
     DemoMaterialModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   bootstrap: [AppComponent]
 })
