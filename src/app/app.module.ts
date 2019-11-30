@@ -7,7 +7,7 @@ import { DefaultDataServiceConfig, EntityDataModule } from '@ngrx/data';
 
 import { entityConfig } from './entity-metadata';
 import { AppComponent } from './app.component';
-import { HeroesComponent } from './hero/hero.component';
+import { HeroesComponent } from './hero/heroes.component';
 
 @NgModule({
   declarations: [
