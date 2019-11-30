@@ -1,30 +1,39 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
+import { Observable } from 'rxjs';
+
 import { HeroListDataSource, HeroListItem } from './hero-list-datasource';
+import { HeroService } from '../../hero.service';
 
 @Component({
   selector: 'app-hero-list',
   templateUrl: './hero-list.component.html',
   styleUrls: ['./hero-list.component.css']
 })
-export class HeroListComponent implements AfterViewInit, OnInit {
+export class HeroListComponent implements OnInit {
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
   @ViewChild(MatTable, {static: false}) table: MatTable<HeroListItem>;
   dataSource: HeroListDataSource;
 
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name'];
+  loading$: Observable<boolean>;
+  heroes$: Observable<any[]>;
 
-  ngOnInit() {
-    this.dataSource = new HeroListDataSource();
+  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
+  displayedColumns = ['id', 'company', 'firstName', 'lastName', 'state'];
+
+  constructor(private heroService: HeroService) {
+    this.heroes$ = heroService.entities$;
+    this.loading$ = heroService.loading$;
   }
 
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
+  ngOnInit() {
+    this.getHeroes();
+  }
+
+  getHeroes() {
+    this.heroService.getAll();
   }
 }
