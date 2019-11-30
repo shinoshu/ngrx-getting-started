@@ -21,9 +21,6 @@ import { HeroesComponent } from './hero/heroes.component';
     EffectsModule.forRoot([]),
     EntityDataModule.forRoot(entityConfig)
   ],
-  entryComponents: [
-    HeroesComponent
-  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
