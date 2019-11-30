@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Hero } from '../../core';
 import { HeroService } from '../hero.service';
 
 @Component({
@@ -10,7 +9,7 @@ import { HeroService } from '../hero.service';
 })
 export class HeroesComponent implements OnInit {
   loading$: Observable<boolean>;
-  heroes$: Observable<Hero[]>;
+  heroes$: Observable<any[]>;
 
   constructor(private heroService: HeroService) {
     this.heroes$ = heroService.entities$;
@@ -21,11 +20,11 @@ export class HeroesComponent implements OnInit {
     this.getHeroes();
   }
 
-  add(hero: Hero) {
+  add(hero: any) {
     this.heroService.add(hero);
   }
 
-  delete(hero: Hero) {
+  delete(hero: any) {
     this.heroService.delete(hero.id);
   }
 
@@ -33,7 +32,7 @@ export class HeroesComponent implements OnInit {
     this.heroService.getAll();
   }
 
-  update(hero: Hero) {
+  update(hero: any) {
     this.heroService.update(hero);
   }
 }
