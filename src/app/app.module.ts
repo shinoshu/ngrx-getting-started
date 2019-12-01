@@ -15,13 +15,21 @@ import { AppComponent } from './app.component';
 import { HeroesComponent } from './hero/heroes.component';
 import { HeroDetailComponent } from './hero/hero-detail/hero-detail.component';
 import { HeroListComponent } from './hero/hero-list/hero-list.component';
+import { NavComponent } from './nav/nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroesComponent,
     HeroDetailComponent,
-    HeroListComponent
+    HeroListComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +41,12 @@ import { HeroListComponent } from './hero/hero-list/hero-list.component';
     EntityDataModule.forRoot(entityConfig),
     DemoMaterialModule,
     AppRoutingModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
   ],
   bootstrap: [AppComponent]
 })
