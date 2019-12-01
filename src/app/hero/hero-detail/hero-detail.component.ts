@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { HeroService } from '../../hero.service';
 
@@ -8,7 +9,9 @@ import { HeroService } from '../../hero.service';
   templateUrl: './hero-detail.component.html',
   styleUrls: ['./hero-detail.component.css']
 })
-export class HeroDetailComponent {
+export class HeroDetailComponent implements OnInit {
+  isNew: Boolean;
+
   form = this.fb.group({
     company: null,
     firstName: [null, Validators.required],
@@ -80,14 +83,28 @@ export class HeroDetailComponent {
     {name: 'Wyoming', abbreviation: 'WY'}
   ];
 
-  constructor(private fb: FormBuilder, private heroService: HeroService) {}
+  constructor(
+    private fb: FormBuilder,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private heroService: HeroService
+  ) {}
+
+  ngOnInit() {
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    this.isNew = id === 'new';
+  }
 
   add(hero: any) {
     this.heroService.add(hero);
   }
 
+  update(hero: any) {
+    this.heroService.update(hero);
+  }
+
   onSubmit() {
-    this.add(this.form.value);
-    alert('Thanks!');
+    this.isNew ? this.add(this.form.value) : this.update(this.form.value);
+    this.router.navigate(['/heroes']);
   }
 }

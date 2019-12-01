@@ -33,6 +33,10 @@ export class HeroListComponent implements OnInit {
     this.getHeroes();
   }
 
+  delete(hero: any) {
+    this.heroService.delete(hero.id);
+  }
+
   getHeroes() {
     this.heroService.getAll();
   }
