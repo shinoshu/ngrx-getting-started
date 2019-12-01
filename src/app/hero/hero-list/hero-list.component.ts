@@ -22,7 +22,7 @@ export class HeroListComponent implements OnInit {
   heroes$: Observable<any[]>;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'company', 'firstName', 'lastName', 'state'];
+  displayedColumns = ['id', 'company', 'firstName', 'lastName', 'edit', 'delete'];
 
   constructor(private heroService: HeroService) {
     this.heroes$ = heroService.entities$;
