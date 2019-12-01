@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 import { HeroService } from '../../hero.service';
 
@@ -11,6 +12,9 @@ import { HeroService } from '../../hero.service';
 })
 export class HeroDetailComponent implements OnInit {
   isNew: Boolean;
+
+  loading$: Observable<boolean>;
+  heroes$: Observable<any[]>;
 
   form = this.fb.group({
     company: null,
@@ -88,7 +92,10 @@ export class HeroDetailComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private heroService: HeroService
-  ) {}
+  ) {
+    this.heroes$ = heroService.entities$;
+    this.loading$ = heroService.loading$;
+  }
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
